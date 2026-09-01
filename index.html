@@ -4,767 +4,1016 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Amex Carta Oro vs Revolut Metal Duo — Confronto Completo</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --amex: #007BC1;
-    --amex-dark: #005a8e;
-    --amex-light: #e8f4fc;
-    --revolut: #7B5EA7;
-    --revolut-dark: #191C1F;
-    --revolut-light: #f0ebf8;
-    --green: #22c55e;
-    --red: #ef4444;
-    --orange: #f59e0b;
-    --bg: #0f1117;
-    --bg2: #1a1d27;
-    --bg3: #22263a;
-    --card: #1e2235;
-    --border: #2d3352;
-    --text: #e8eaf0;
-    --text-muted: #8892a4;
-    --text-dim: #5a6278;
-    --radius: 16px;
-    --radius-sm: 8px;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+  /* ── RESET & BASE ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
   body {
-    font-family: 'Inter', system-ui, sans-serif;
-    background: var(--bg);
-    color: var(--text);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+    background: #F5F5F7;
+    color: #1d1d1f;
     line-height: 1.6;
     font-size: 15px;
+    -webkit-font-smoothing: antialiased;
   }
   a { color: inherit; text-decoration: none; }
 
-  /* HEADER */
-  header {
-    background: linear-gradient(135deg, #0d1526 0%, #1a1230 50%, #0d1526 100%);
-    border-bottom: 1px solid var(--border);
-    padding: 48px 24px 40px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
+  /* ── AMEX TOKENS ── */
+  :root {
+    --amex-gold: #C9A84C;
+    --amex-amber: #F5A623;
+    --amex-cream: #FFF8EC;
+    --amex-dark: #1A1209;
+    --amex-border: rgba(201,168,76,0.35);
+    --amex-bg: #FFF8EC;
+
+    /* ── REVOLUT TOKENS ── */
+    --rev-dark: #1C1C1E;
+    --rev-silver: #8E8E93;
+    --rev-graphite: #2C2C2E;
+    --rev-violet: #7B5EA7;
+    --rev-light-violet: #A78BCC;
+    --rev-border: rgba(142,142,147,0.3);
+
+    /* ── GLOBAL ── */
+    --page-bg: #F5F5F7;
+    --white: #ffffff;
+    --text-primary: #1d1d1f;
+    --text-secondary: #6e6e73;
+    --text-tertiary: #aeaeb2;
+    --radius-card: 20px;
+    --radius-inner: 12px;
+    --shadow-soft: 0 2px 20px rgba(0,0,0,0.07), 0 1px 4px rgba(0,0,0,0.04);
+    --shadow-med: 0 8px 40px rgba(0,0,0,0.10), 0 2px 8px rgba(0,0,0,0.06);
+    --green: #34c759;
+    --red: #ff3b30;
+    --orange: #ff9500;
   }
-  header::before {
-    content: '';
-    position: absolute;
-    top: -60px; left: 50%; transform: translateX(-50%);
-    width: 600px; height: 300px;
-    background: radial-gradient(ellipse, rgba(0,123,193,0.15) 0%, rgba(123,94,167,0.15) 50%, transparent 70%);
-    pointer-events: none;
+
+  /* ── NAV ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(245,245,247,0.82);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    padding: 0 24px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-  header .badge {
-    display: inline-block;
-    background: rgba(255,255,255,0.07);
-    border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 100px;
-    padding: 6px 18px;
+  .nav-inner {
+    max-width: 900px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .nav-inner::-webkit-scrollbar { display: none; }
+  .nav-link {
     font-size: 12px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    padding: 6px 12px;
+    border-radius: 100px;
+    white-space: nowrap;
+    transition: all 0.18s;
+    flex-shrink: 0;
+  }
+  .nav-link:hover { background: rgba(0,0,0,0.05); color: var(--text-primary); }
+
+  /* ── LAYOUT ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 96px 24px 80px;
+    text-align: center;
+    background: #F5F5F7;
+  }
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
     font-weight: 600;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: var(--text-muted);
-    margin-bottom: 20px;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
   }
-  header h1 {
-    font-size: clamp(24px, 5vw, 44px);
+  .hero h1 {
+    font-size: clamp(36px, 6vw, 64px);
     font-weight: 800;
-    line-height: 1.15;
-    margin-bottom: 12px;
-    background: linear-gradient(90deg, #007BC1, #a78bfa, #007BC1);
-    background-size: 200% auto;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    color: var(--text-primary);
+    margin-bottom: 20px;
+    max-width: 760px;
+    margin-left: auto;
+    margin-right: auto;
   }
-  header p {
-    color: var(--text-muted);
+  .hero h1 .amex-accent { color: var(--amex-gold); }
+  .hero h1 .rev-accent { color: var(--rev-violet); }
+  .hero-sub {
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    max-width: 520px;
+    margin: 0 auto 40px;
+    line-height: 1.55;
+  }
+  .hero-pills {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .pill-amex {
+    background: linear-gradient(135deg, rgba(201,168,76,0.12), rgba(245,166,35,0.12));
+    color: #7a5c10;
+    border: 1px solid rgba(201,168,76,0.3);
+  }
+  .pill-rev {
+    background: rgba(123,94,167,0.1);
+    color: var(--rev-violet);
+    border: 1px solid rgba(123,94,167,0.2);
+  }
+
+  /* ── SECTION ── */
+  .section {
+    padding: 72px 0;
+  }
+  .section + .section { border-top: 1px solid rgba(0,0,0,0.06); }
+  .section-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .section-emoji {
+    font-size: 36px;
+    display: block;
+    margin-bottom: 12px;
+    line-height: 1;
+  }
+  .section-header h2 {
+    font-size: clamp(22px, 3.5vw, 34px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+  }
+  .section-header p {
     font-size: 16px;
-    max-width: 540px;
+    color: var(--text-secondary);
+    max-width: 480px;
     margin: 0 auto;
   }
 
-  /* LAYOUT */
-  .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-  .section { padding: 48px 0 0; }
-  .section-title {
-    font-size: 13px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--text-dim);
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .section-title::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-  }
-
-  /* COST BANNER */
-  .cost-banner {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    gap: 16px;
-    align-items: center;
-    margin-top: 32px;
-    padding: 0 0 48px;
-  }
-  .cost-card {
-    background: var(--card);
-    border-radius: var(--radius);
-    padding: 28px 24px;
-    border: 1px solid var(--border);
-    position: relative;
-    overflow: hidden;
-  }
-  .cost-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-  }
-  .cost-card.amex::before { background: linear-gradient(90deg, var(--amex), #00b4d8); }
-  .cost-card.revolut::before { background: linear-gradient(90deg, var(--revolut), #c084fc); }
-  .cost-card .brand-label {
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-bottom: 8px;
-  }
-  .cost-card.amex .brand-label { color: var(--amex); }
-  .cost-card.revolut .brand-label { color: var(--revolut); }
-  .cost-card .price { font-size: 42px; font-weight: 800; line-height: 1; margin-bottom: 4px; }
-  .cost-card .price-sub { font-size: 13px; color: var(--text-muted); margin-bottom: 12px; }
-  .cost-card .price-detail { font-size: 13px; color: var(--text-muted); line-height: 1.8; }
-  .cost-card .price-detail strong { color: var(--text); }
-  .vs-badge {
-    width: 52px; height: 52px;
-    background: var(--bg3);
-    border: 2px solid var(--border);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-weight: 800;
-    font-size: 14px;
-    color: var(--text-muted);
-    flex-shrink: 0;
-    justify-self: center;
-  }
-
-  /* COMPARISON TABLE ROWS */
-  .compare-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin-bottom: 12px;
-  }
-  .compare-cell {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    padding: 18px 20px;
-    position: relative;
-  }
-  .compare-cell.amex-col { border-left: 3px solid var(--amex); }
-  .compare-cell.revolut-col { border-left: 3px solid var(--revolut); }
-  .compare-cell h4 {
-    font-size: 12px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-bottom: 10px;
-  }
-  .compare-cell.amex-col h4 { color: var(--amex); }
-  .compare-cell.revolut-col h4 { color: var(--revolut); }
-  .compare-cell ul { list-style: none; padding: 0; }
-  .compare-cell ul li {
-    padding: 5px 0;
-    font-size: 14px;
-    color: var(--text-muted);
-    padding-left: 20px;
-    position: relative;
-    border-bottom: 1px solid rgba(255,255,255,0.04);
-  }
-  .compare-cell ul li:last-child { border-bottom: none; }
-  .compare-cell ul li::before {
-    content: '•';
-    position: absolute; left: 0;
-    color: var(--text-dim);
-  }
-  .compare-cell ul li strong { color: var(--text); }
-  .compare-cell .highlight-val {
-    font-size: 28px;
-    font-weight: 800;
-    line-height: 1;
-    margin-bottom: 6px;
-  }
-  .amex-col .highlight-val { color: var(--amex); }
-  .revolut-col .highlight-val { color: var(--revolut); }
-
-  /* WINNER BADGE */
-  .winner-badge {
-    position: absolute;
-    top: 12px; right: 12px;
-    background: rgba(34,197,94,0.15);
-    border: 1px solid rgba(34,197,94,0.3);
-    color: var(--green);
-    font-size: 10px;
-    font-weight: 700;
-    padding: 3px 9px;
-    border-radius: 100px;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-  }
-
-  /* ROW HEADER */
-  .row-header {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    padding: 12px 20px;
-    margin-bottom: 12px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .row-header .icon { font-size: 20px; }
-  .row-header h3 { font-size: 16px; font-weight: 700; }
-
-  /* SIMULATION */
-  .sim-grid {
+  /* ── COLUMN LABELS ── */
+  .col-labels {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 16px;
     margin-bottom: 16px;
   }
-  .sim-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 24px;
-    overflow: hidden;
-    position: relative;
+  .col-label {
+    padding: 10px 20px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    text-align: center;
   }
-  .sim-card::before {
+  .col-label-amex {
+    background: linear-gradient(135deg, var(--amex-gold), var(--amex-amber));
+    color: var(--amex-dark);
+  }
+  .col-label-rev {
+    background: var(--rev-dark);
+    color: var(--white);
+  }
+
+  /* ── COMPARE ROW ── */
+  .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+
+  /* ── AMEX CARD ── */
+  .card-amex {
+    background: var(--amex-cream);
+    border: 1px solid var(--amex-border);
+    border-radius: var(--radius-card);
+    padding: 24px;
+    position: relative;
+    box-shadow: var(--shadow-soft);
+  }
+  .card-amex::before {
     content: '';
     position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
+    inset: 0;
+    border-radius: var(--radius-card);
+    background: linear-gradient(135deg, rgba(201,168,76,0.06) 0%, transparent 60%);
+    pointer-events: none;
   }
-  .sim-card.amex::before { background: linear-gradient(90deg, var(--amex), #00b4d8); }
-  .sim-card.revolut::before { background: linear-gradient(90deg, var(--revolut), #c084fc); }
-  .sim-card .sim-title {
-    font-size: 12px; font-weight: 700; text-transform: uppercase;
-    letter-spacing: 0.08em; margin-bottom: 16px;
+
+  /* ── REVOLUT CARD ── */
+  .card-rev {
+    background: var(--rev-dark);
+    border: 1px solid var(--rev-border);
+    border-radius: var(--radius-card);
+    padding: 24px;
+    position: relative;
+    box-shadow: var(--shadow-soft);
+    color: var(--white);
   }
-  .sim-card.amex .sim-title { color: var(--amex); }
-  .sim-card.revolut .sim-title { color: var(--revolut); }
+  .card-rev::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius-card);
+    background: linear-gradient(135deg, rgba(123,94,167,0.15) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  /* ── CARD CONTENTS ── */
+  .card-title {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 14px;
+  }
+  .card-amex .card-title { color: var(--amex-gold); }
+  .card-rev .card-title { color: var(--rev-silver); }
+
+  .big-number {
+    font-size: 48px;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .card-amex .big-number { color: var(--amex-dark); }
+  .card-rev .big-number { color: var(--white); }
+
+  .number-sub {
+    font-size: 13px;
+    margin-bottom: 16px;
+  }
+  .card-amex .number-sub { color: #7a6030; }
+  .card-rev .number-sub { color: var(--rev-silver); }
+
+  .detail-list { list-style: none; }
+  .detail-list li {
+    font-size: 13px;
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .card-rev .detail-list li { border-bottom-color: rgba(255,255,255,0.06); }
+  .detail-list li:last-child { border-bottom: none; }
+  .detail-list .label { color: inherit; opacity: 0.7; }
+  .detail-list .val { font-weight: 600; text-align: right; }
+  .card-amex .detail-list .val { color: var(--amex-dark); }
+  .card-rev .detail-list .val { color: var(--white); }
+
+  .card-body {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .card-amex .card-body { color: #4a3810; }
+  .card-rev .card-body { color: rgba(255,255,255,0.82); }
+
+  .card-body ul { list-style: none; }
+  .card-body ul li {
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    font-size: 13px;
+  }
+  .card-rev .card-body ul li { border-bottom-color: rgba(255,255,255,0.07); }
+  .card-body ul li:last-child { border-bottom: none; }
+
+  /* ── BADGE VINCITORE ── */
+  .winner-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 5px 12px;
+    border-radius: 100px;
+    margin-bottom: 14px;
+  }
+  .winner-badge-amex {
+    background: linear-gradient(135deg, var(--amex-gold), var(--amex-amber));
+    color: var(--amex-dark);
+  }
+  .winner-badge-rev {
+    background: linear-gradient(135deg, var(--rev-silver), var(--rev-light-violet));
+    color: var(--white);
+  }
+  .winner-badge-neutral {
+    background: rgba(110,110,115,0.15);
+    color: var(--text-secondary);
+  }
+
+  /* ── INFO CARD (nota singola) ── */
+  .info-card {
+    background: var(--white);
+    border-radius: var(--radius-card);
+    padding: 24px;
+    border: 1px solid rgba(0,0,0,0.07);
+    box-shadow: var(--shadow-soft);
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-top: 12px;
+    grid-column: 1 / -1;
+  }
+  .info-card strong { color: var(--text-primary); }
+
+  /* ── NOTICE ── */
+  .notice {
+    background: rgba(255,149,0,0.08);
+    border: 1px solid rgba(255,149,0,0.2);
+    border-radius: var(--radius-inner);
+    padding: 14px 18px;
+    font-size: 13px;
+    color: #7a4800;
+    line-height: 1.55;
+    margin-top: 12px;
+    grid-column: 1 / -1;
+  }
+
+  /* ── SIMULAZIONE ── */
+  .sim-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .sim-card {
+    border-radius: var(--radius-card);
+    padding: 28px;
+    box-shadow: var(--shadow-soft);
+  }
+  .sim-card-amex {
+    background: linear-gradient(145deg, var(--amex-cream) 0%, #fff3d0 100%);
+    border: 1px solid var(--amex-border);
+  }
+  .sim-card-rev {
+    background: linear-gradient(145deg, var(--rev-dark) 0%, var(--rev-graphite) 100%);
+    border: 1px solid var(--rev-border);
+    color: var(--white);
+  }
+  .sim-title {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    margin-bottom: 20px;
+  }
+  .sim-card-amex .sim-title { color: var(--amex-gold); }
+  .sim-card-rev .sim-title { color: var(--rev-silver); }
+
   .sim-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 8px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
     font-size: 13px;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    gap: 12px;
   }
+  .sim-card-rev .sim-row { border-bottom-color: rgba(255,255,255,0.07); }
   .sim-row:last-child { border-bottom: none; }
   .sim-row.total-row {
-    margin-top: 8px;
     padding-top: 12px;
-    border-top: 1px solid var(--border);
+    margin-top: 4px;
+    border-top: 2px solid rgba(0,0,0,0.1);
     border-bottom: none;
     font-weight: 700;
-    font-size: 15px;
+    font-size: 14px;
   }
-  .sim-row .label { color: var(--text-muted); }
-  .sim-row .val-neg { color: var(--red); font-weight: 600; }
-  .sim-row .val-pos { color: var(--green); font-weight: 600; }
-  .sim-row .val-warn { color: var(--orange); font-weight: 600; }
-  .sim-row.total-row .val-neg { font-size: 20px; color: var(--red); }
-  .sim-row.total-row .val-pos { font-size: 20px; color: var(--green); }
+  .sim-card-rev .sim-row.total-row { border-top-color: rgba(255,255,255,0.15); }
+  .sim-row .label { opacity: 0.75; flex: 1; }
+  .sim-row .val-pos { font-weight: 600; color: var(--green); white-space: nowrap; }
+  .sim-row .val-neg { font-weight: 600; color: var(--red); white-space: nowrap; }
+  .sim-row .val-neu { font-weight: 600; white-space: nowrap; }
+  .sim-card-amex .sim-row .val-neu { color: var(--amex-dark); }
+  .sim-card-rev .sim-row .val-neu { color: var(--white); }
 
-  /* VERDICT */
-  .verdict-grid {
+  /* ── STAT NUMBERS ── */
+  .stat-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: 16px;
-    margin-bottom: 48px;
+    margin-bottom: 16px;
   }
-  .verdict-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 24px;
-    overflow: hidden;
-    position: relative;
-  }
-  .verdict-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-  }
-  .verdict-card.amex::before { background: linear-gradient(90deg, var(--amex), #00b4d8); }
-  .verdict-card.revolut::before { background: linear-gradient(90deg, var(--revolut), #c084fc); }
-  .verdict-card h3 {
-    font-size: 17px; font-weight: 800;
-    margin-bottom: 4px;
-  }
-  .verdict-card.amex h3 { color: var(--amex); }
-  .verdict-card.revolut h3 { color: var(--revolut); }
-  .verdict-card .tagline { font-size: 13px; color: var(--text-muted); margin-bottom: 16px; }
-  .pro-con-list { list-style: none; padding: 0; }
-  .pro-con-list li {
-    padding: 6px 0 6px 24px;
-    font-size: 13px;
-    color: var(--text-muted);
-    position: relative;
-    border-bottom: 1px solid rgba(255,255,255,0.04);
-  }
-  .pro-con-list li:last-child { border-bottom: none; }
-  .pro-con-list li.pro::before { content: '✓'; position: absolute; left: 0; color: var(--green); font-weight: 700; }
-  .pro-con-list li.con::before { content: '✗'; position: absolute; left: 0; color: var(--red); font-weight: 700; }
-  .pro-con-list li strong { color: var(--text); }
-  .list-sub-title {
-    font-size: 11px; font-weight: 700; text-transform: uppercase;
-    letter-spacing: 0.08em; color: var(--text-dim); margin: 12px 0 6px;
-  }
-
-  /* NOTICE BOX */
-  .notice {
-    background: rgba(245,158,11,0.08);
-    border: 1px solid rgba(245,158,11,0.25);
-    border-radius: var(--radius-sm);
-    padding: 12px 16px;
-    font-size: 13px;
-    color: #fcd34d;
-    margin-top: 12px;
-    margin-bottom: 0;
-  }
-  .notice::before { content: '⚠️ '; }
-
-  /* FOOTER */
-  footer {
-    background: var(--bg2);
-    border-top: 1px solid var(--border);
-    padding: 32px 24px;
+  .stat-card-amex {
+    background: var(--amex-cream);
+    border: 1px solid var(--amex-border);
+    border-radius: var(--radius-card);
+    padding: 28px 20px;
     text-align: center;
-    color: var(--text-dim);
-    font-size: 13px;
-    margin-top: 64px;
+    box-shadow: var(--shadow-soft);
   }
-  footer strong { color: var(--text-muted); }
+  .stat-card-rev {
+    background: var(--rev-dark);
+    border: 1px solid var(--rev-border);
+    border-radius: var(--radius-card);
+    padding: 28px 20px;
+    text-align: center;
+    box-shadow: var(--shadow-soft);
+    color: var(--white);
+  }
+  .stat-value {
+    font-size: 38px;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .stat-card-amex .stat-value { color: var(--amex-dark); }
+  .stat-card-rev .stat-value { color: var(--white); }
+  .stat-label { font-size: 12px; font-weight: 500; opacity: 0.65; }
 
-  /* RESPONSIVE */
-  @media (max-width: 680px) {
-    .cost-banner { grid-template-columns: 1fr; }
-    .vs-badge { display: none; }
-    .compare-grid, .sim-grid, .verdict-grid { grid-template-columns: 1fr; }
-    .cost-card .price { font-size: 36px; }
+  /* ── PRO/CON LISTS (Verdict) ── */
+  .verdict-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .verdict-card-amex {
+    background: linear-gradient(145deg, var(--amex-cream) 0%, #fff3d0 60%, var(--amex-cream) 100%);
+    border: 1.5px solid var(--amex-border);
+    border-radius: var(--radius-card);
+    padding: 32px 28px;
+    box-shadow: var(--shadow-med);
+  }
+  .verdict-card-rev {
+    background: linear-gradient(145deg, var(--rev-dark) 0%, var(--rev-graphite) 60%, var(--rev-dark) 100%);
+    border: 1.5px solid rgba(123,94,167,0.25);
+    border-radius: var(--radius-card);
+    padding: 32px 28px;
+    box-shadow: var(--shadow-med);
+    color: var(--white);
+  }
+  .verdict-card-amex h3 { font-size: 18px; font-weight: 700; color: var(--amex-dark); margin-bottom: 4px; letter-spacing: -0.01em; }
+  .verdict-card-rev h3 { font-size: 18px; font-weight: 700; color: var(--white); margin-bottom: 4px; letter-spacing: -0.01em; }
+  .verdict-tagline { font-size: 13px; margin-bottom: 22px; }
+  .verdict-card-amex .verdict-tagline { color: #7a6030; }
+  .verdict-card-rev .verdict-tagline { color: var(--rev-silver); }
+  .verdict-sub { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; margin: 16px 0 8px; }
+  .verdict-card-amex .verdict-sub { color: var(--amex-gold); }
+  .verdict-card-rev .verdict-sub { color: var(--rev-light-violet); }
+  .verdict-list { list-style: none; }
+  .verdict-list li { font-size: 13px; line-height: 1.5; padding: 5px 0; display: flex; gap: 8px; align-items: flex-start; }
+  .verdict-list li::before { flex-shrink: 0; margin-top: 1px; }
+  .verdict-list.pros li::before { content: '✓'; font-weight: 700; color: var(--green); }
+  .verdict-list.cons li::before { content: '✕'; font-weight: 700; color: var(--red); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--white);
+    border-top: 1px solid rgba(0,0,0,0.07);
+    padding: 40px 24px;
+    margin-top: 72px;
+    text-align: center;
+  }
+  footer p { font-size: 12px; color: var(--text-secondary); line-height: 1.7; max-width: 680px; margin: 0 auto; }
+  footer p + p { margin-top: 6px; }
+  footer a { color: var(--rev-violet); }
+
+  /* ── DIVIDER ── */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0,0,0,0.08), transparent);
+    margin: 0;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .compare-grid, .col-labels, .sim-wrapper, .verdict-grid { grid-template-columns: 1fr; }
+    .stat-grid { grid-template-columns: 1fr 1fr; }
+    .hero { padding: 64px 20px 52px; }
+    .section { padding: 52px 0; }
+    .big-number { font-size: 36px; }
+    .stat-value { font-size: 30px; }
+    nav { padding: 0 12px; }
+  }
+  @media (max-width: 480px) {
+    .stat-grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 30px; }
   }
 </style>
 </head>
 <body>
 
-<header>
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-inner">
+    <a class="nav-link" href="#costi">💳 Costi</a>
+    <a class="nav-link" href="#assicurazione">🌍 Assicurazione</a>
+    <a class="nav-link" href="#noleggio">🚗 Noleggio</a>
+    <a class="nav-link" href="#punti">✨ Punti</a>
+    <a class="nav-link" href="#lounge">🛫 Lounge</a>
+    <a class="nav-link" href="#valuta">💱 Valuta</a>
+    <a class="nav-link" href="#altri">🎁 Altri benefit</a>
+    <a class="nav-link" href="#simulazione">📊 Simulazione</a>
+    <a class="nav-link" href="#verdetto">🏆 Verdetto</a>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
   <div class="container">
-    <div class="badge">💳 Confronto carte · Settembre 2026</div>
-    <h1>Amex Carta Oro<br>vs Revolut Metal Duo</h1>
-    <p>Analisi completa per coppia — costi, assicurazioni, noleggio, punti e simulazione valore annuo</p>
+    <div class="hero-eyebrow">
+      <span>💳</span>
+      <span>Confronto completo · Settembre 2026</span>
+    </div>
+    <h1>
+      <span class="amex-accent">Amex Carta Oro</span><br>
+      vs<br>
+      <span class="rev-accent">Revolut Metal Duo</span>
+    </h1>
+    <p class="hero-sub">Quale carta premia davvero il tuo stile di vita? Un'analisi completa di costi, benefit, assicurazioni e valore reale.</p>
+    <div class="hero-pills">
+      <span class="pill pill-amex">🥇 Oro &amp; Punti MR</span>
+      <span class="pill pill-rev">⚡ Metal &amp; Cashback</span>
+    </div>
   </div>
-</header>
+</section>
 
-<div class="container">
+<div class="divider"></div>
 
-  <!-- COSTI -->
-  <div class="section">
-    <div class="section-title">💶 Costo annuale coppia</div>
-    <div class="cost-banner">
-      <div class="cost-card amex">
-        <div class="brand-label">American Express Carta Oro</div>
-        <div class="price">€323</div>
-        <div class="price-sub">per anno dal 2° anno (coppia)</div>
-        <div class="price-detail">
-          <strong>Titolare:</strong> €240/anno (€20/mese)<br>
-          <strong>Supplementare Carlotta:</strong> €83/anno<br>
-          <strong>1° anno:</strong> entrambe gratuite online
+<!-- ── SECTION 1: COSTI ── -->
+<section class="section" id="costi">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-emoji">💳</span>
+      <h2>Costi annuali</h2>
+      <p>Quanto costa tenere la carta in tasca ogni anno</p>
+    </div>
+    <div class="col-labels">
+      <div class="col-label col-label-amex">American Express Carta Oro</div>
+      <div class="col-label col-label-rev">Revolut Metal Duo</div>
+    </div>
+    <div class="compare-grid">
+      <div class="card-amex">
+        <div class="card-title">American Express · Carta Oro</div>
+        <div class="big-number">€160</div>
+        <div class="number-sub">canone annuo ufficiale</div>
+        <ul class="detail-list">
+          <li><span class="label">Primo anno</span><span class="val">€0 (offerta benvenuto)</span></li>
+          <li><span class="label">Supplementare Carlotta</span><span class="val">€ inclusa</span></li>
+          <li><span class="label">Voucher annuale</span><span class="val">+€100 rimborso</span></li>
+          <li><span class="label">Costo netto effettivo</span><span class="val">€60 / anno</span></li>
+        </ul>
+      </div>
+      <div class="card-rev">
+        <div class="card-title">Revolut Metal · Piano Duo</div>
+        <div class="big-number">€252</div>
+        <div class="number-sub">€21/mese · include lui + Carlotta</div>
+        <ul class="detail-list">
+          <li><span class="label">Piano Metal individuale</span><span class="val">€13,99/mese</span></li>
+          <li><span class="label">Piano Metal Duo (coppia)</span><span class="val">€21/mese</span></li>
+          <li><span class="label">Cashback stimato</span><span class="val">+€60–120/anno</span></li>
+          <li><span class="label">Costo netto effettivo</span><span class="val">€130–190 / anno</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="compare-grid">
+      <div class="info-card" style="grid-column: 1/-1;">
+        <strong>📌 Sintesi:</strong> Amex Oro ha canone nominale più basso (€160 vs €252) e il voucher €100 porta il costo netto a ~€60/anno. Revolut Metal Duo copre però due piani completi indipendenti; il costo pro-capite è circa €126/anno ciascuno.
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── SECTION 2: ASSICURAZIONE ── -->
+<section class="section" id="assicurazione">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-emoji">🌍</span>
+      <h2>Assicurazione viaggio</h2>
+      <p>Coperture mediche, bagagli e cancellazioni</p>
+    </div>
+    <div class="col-labels">
+      <div class="col-label col-label-amex">American Express Carta Oro</div>
+      <div class="col-label col-label-rev">Revolut Metal Duo</div>
+    </div>
+    <div class="compare-grid">
+      <div class="card-amex">
+        <div class="winner-badge winner-badge-neutral">Copertura base</div>
+        <div class="card-title">Amex · Chubb</div>
+        <ul class="detail-list">
+          <li><span class="label">Medico/Rimpatrio</span><span class="val">€3.000</span></li>
+          <li><span class="label">Cancellazione viaggio</span><span class="val">€5.000</span></li>
+          <li><span class="label">Bagaglio ritardato</span><span class="val">€400 / €800</span></li>
+          <li><span class="label">Responsabilità civile</span><span class="val">✓</span></li>
+          <li><span class="label">Copertura area</span><span class="val">Europa + extra EU</span></li>
+          <li><span class="label">Attivazione</span><span class="val">Pagare con Amex</span></li>
+          <li><span class="label">Partner coperto</span><span class="val">Sì (se viaggi insieme)</span></li>
+        </ul>
+      </div>
+      <div class="card-rev">
+        <div class="winner-badge winner-badge-rev">✦ Vantaggio chiaro</div>
+        <div class="card-title">Revolut · XCover</div>
+        <ul class="detail-list">
+          <li><span class="label">Medico/Rimpatrio</span><span class="val">€10.000.000</span></li>
+          <li><span class="label">Cancellazione viaggio</span><span class="val">€10.000</span></li>
+          <li><span class="label">Bagaglio ritardato</span><span class="val">€1.000</span></li>
+          <li><span class="label">Responsabilità civile</span><span class="val">✓</span></li>
+          <li><span class="label">Copertura area</span><span class="val">Worldwide</span></li>
+          <li><span class="label">Attivazione</span><span class="val">Pagare TUTTO il viaggio</span></li>
+          <li><span class="label">Carlotta coperta</span><span class="val">Sì, autonoma (piano Duo)</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="notice" style="margin-top: 0;">
+      ⚠️ La copertura medica Amex è €3.000 totali — insufficiente per eventi gravi fuori Europa. Revolut vince nettamente su questo fronte, ma richiede di pagare l'intero viaggio con la carta.
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── SECTION 3: NOLEGGIO AUTO ── -->
+<section class="section" id="noleggio">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-emoji">🚗</span>
+      <h2>Noleggio auto</h2>
+      <p>Sconti, coperture CDW e benefit dedicati</p>
+    </div>
+    <div class="col-labels">
+      <div class="col-label col-label-amex">American Express Carta Oro</div>
+      <div class="col-label col-label-rev">Revolut Metal Duo</div>
+    </div>
+    <div class="compare-grid">
+      <div class="card-amex">
+        <div class="winner-badge winner-badge-amex">✦ Vantaggio chiaro</div>
+        <div class="card-title">Amex · Noleggio</div>
+        <div class="card-body">
+          <ul>
+            <li>🏷️ Sconto <strong>10–20%</strong> con Avis e Hertz</li>
+            <li>🛡️ CDW (kasko) inclusa pagando con Amex — da verificare con Amex direttamente</li>
+            <li>🎫 Tariffe American Express preferenziali</li>
+            <li>🔑 Accesso prioritario in alcune location</li>
+          </ul>
         </div>
       </div>
-      <div class="vs-badge">VS</div>
-      <div class="cost-card revolut">
-        <div class="brand-label">Revolut Metal Duo</div>
-        <div class="price">€260</div>
-        <div class="price-sub">per anno (piano annuale coppia)</div>
-        <div class="price-detail">
-          <strong>Metal Duo mensile:</strong> €21,99/mese = €263,88<br>
-          <strong>Metal individuale annuale:</strong> €155/anno<br>
-          <strong>Account separati</strong> per entrambi
+      <div class="card-rev">
+        <div class="winner-badge winner-badge-neutral">Nessun benefit dedicato</div>
+        <div class="card-title">Revolut · Noleggio</div>
+        <div class="card-body">
+          <ul>
+            <li>❌ Nessuno sconto negoziale con partner noleggio</li>
+            <li>❌ CDW non inclusa</li>
+            <li>💳 Utilizzabile come carta di garanzia</li>
+            <li>ℹ️ Si paga la tariffa standard del noleggiatore</li>
+          </ul>
         </div>
       </div>
     </div>
   </div>
+</section>
 
-  <!-- ASSICURAZIONE VIAGGIO -->
-  <div class="section">
-    <div class="section-title">🏥 Assicurazione viaggio</div>
-    <div class="row-header">
-      <span class="icon">✈️</span>
-      <h3>Copertura medica e inconvenienti di viaggio</h3>
+<div class="divider"></div>
+
+<!-- ── SECTION 4: PUNTI & CASHBACK ── -->
+<section class="section" id="punti">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-emoji">✨</span>
+      <h2>Punti &amp; Cashback</h2>
+      <p>Come si accumulano e quanto valgono i premi</p>
+    </div>
+    <div class="col-labels">
+      <div class="col-label col-label-amex">American Express Carta Oro</div>
+      <div class="col-label col-label-rev">Revolut Metal Duo</div>
     </div>
     <div class="compare-grid">
-      <div class="compare-cell amex-col">
-        <h4>American Express Carta Oro</h4>
-        <div class="highlight-val">€3.000</div>
-        <div style="font-size:12px;color:var(--text-dim);margin-bottom:12px">per emergenze mediche</div>
-        <ul>
-          <li>Polizze Chubb ufficiali incluse</li>
-          <li>Ritardo volo (>4h): <strong>€300</strong> spese</li>
-          <li>Ritardo bagagli (>6h): <strong>€525</strong></li>
-          <li>Perdita bagagli (>48h): <strong>€2.325</strong></li>
-          <li>Rimpatrio sanitario organizzato</li>
-          <li>Assistenza legale estero: <strong>€1.500</strong></li>
-          <li>Anticipo liquidità furto: <strong>€1.000</strong></li>
-          <li>Attivazione: pagare volo con carta</li>
+      <div class="card-amex">
+        <div class="card-title">Membership Rewards</div>
+        <ul class="detail-list">
+          <li><span class="label">Accumulo base</span><span class="val">1 punto / €1</span></li>
+          <li><span class="label">Ristoranti &amp; supermercati</span><span class="val">2× punti</span></li>
+          <li><span class="label">Voli Amex Travel</span><span class="val">2× punti</span></li>
+          <li><span class="label">Trasferimento miglia</span><span class="val">Volare, Flying Blue, BA</span></li>
+          <li><span class="label">Voucher annuale</span><span class="val">€100 rimborso spese</span></li>
+          <li><span class="label">Valore stimato punti</span><span class="val">0,5–2 cent/punto</span></li>
         </ul>
-        <div class="notice">Se viaggi con la supplementare (Carlotta) sullo stesso biglietto, i massimali si dividono tra voi</div>
       </div>
-      <div class="compare-cell revolut-col">
-        <h4>Revolut Metal Duo</h4>
-        <span class="winner-badge">Vince</span>
-        <div class="highlight-val">€10M</div>
-        <div style="font-size:12px;color:var(--text-dim);margin-bottom:12px">per emergenze mediche</div>
-        <ul>
-          <li>Polizza XCover (marzo 2025)</li>
-          <li>Annullamento viaggio: <strong>€5.000</strong></li>
-          <li>Ritardo volo (>8h): <strong>€500</strong></li>
-          <li>Ritardo bagagli (>8h): <strong>€400</strong></li>
-          <li>Bagagli smarriti: <strong>€1.000</strong></li>
-          <li>Responsabilità civile: <strong>€1.000.000</strong></li>
-          <li>Coniuge/convivente coperto</li>
-          <li>Attivazione: pagare <em>trasporto + hotel</em> con carta</li>
+      <div class="card-rev">
+        <div class="card-title">Cashback diretto</div>
+        <ul class="detail-list">
+          <li><span class="label">Cashback base</span><span class="val">0,1% su tutto</span></li>
+          <li><span class="label">Weekend</span><span class="val">1% cashback venerdì–dom</span></li>
+          <li><span class="label">Revolut Stays</span><span class="val">10% cashback hotel</span></li>
+          <li><span class="label">Lounge SmartDelay</span><span class="val">Accesso gratuito se >1h ritardo</span></li>
+          <li><span class="label">Valuta extra-EU</span><span class="val">0% commissioni illimitate</span></li>
+          <li><span class="label">Valore stimato cashback</span><span class="val">€60–120 / anno tipico</span></li>
         </ul>
-        <div class="notice">Condizioni preesistenti escluse. Viaggio max 30 giorni. Serve pagare TUTTO con Revolut Metal</div>
+      </div>
+    </div>
+    <div class="info-card">
+      <strong>💡 Nota:</strong> I punti MR Amex hanno valore variabile — massimizzati con transfer in miglia aeree (fino a 2 cent/punto). Il cashback Revolut è immediato in euro ma più basso. Il 10% su Revolut Stays può ribaltare completamente la simulazione se si prenotano 1–2 notti/anno tramite app.
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── SECTION 5: LOUNGE ── -->
+<section class="section" id="lounge">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-emoji">🛫</span>
+      <h2>Lounge aeroportuali</h2>
+      <p>Accesso e condizioni per lui e Carlotta</p>
+    </div>
+    <div class="col-labels">
+      <div class="col-label col-label-amex">American Express Carta Oro</div>
+      <div class="col-label col-label-rev">Revolut Metal Duo</div>
+    </div>
+    <div class="compare-grid">
+      <div class="card-amex">
+        <div class="winner-badge winner-badge-amex">✦ Accesso garantito</div>
+        <div class="card-title">Amex · Lounge Access</div>
+        <div class="card-body">
+          <ul>
+            <li>✅ <strong>Centurion Lounge</strong>: accesso diretto con la carta</li>
+            <li>✅ <strong>Lounge partner Amex</strong> nelle principali città EU</li>
+            <li>✅ Carlotta può entrare come accompagnatrice (con possibile sovrapprezzo)</li>
+            <li>⚠️ Non include Priority Pass (solo Platinum)</li>
+            <li>ℹ️ Accesso su richiesta, non automatico</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card-rev">
+        <div class="card-title">Revolut · SmartDelay</div>
+        <div class="card-body">
+          <ul>
+            <li>⚠️ <strong>Solo se volo ritarda &gt;1 ora</strong></li>
+            <li>✅ Lounge LoungeKey se condizione soddisfatta</li>
+            <li>✅ Carlotta coperta autonomamente col piano Duo</li>
+            <li>❌ Nessun accesso garantito prima del ritardo</li>
+            <li>ℹ️ Non pianificabile in anticipo — dipende dal ritardo</li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
+</section>
 
-  <!-- NOLEGGIO AUTO -->
-  <div class="section">
-    <div class="section-title">🚗 Noleggio auto</div>
-    <div class="row-header">
-      <span class="icon">🔑</span>
-      <h3>Sconti, kasko e copertura franchigia (2–3 noleggi/anno, ~10 giorni totali)</h3>
+<div class="divider"></div>
+
+<!-- ── SECTION 6: CAMBIO VALUTA ── -->
+<section class="section" id="valuta">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-emoji">💱</span>
+      <h2>Cambio valuta &amp; ATM</h2>
+      <p>Commissioni e limiti di prelievo all'estero</p>
+    </div>
+    <div class="col-labels">
+      <div class="col-label col-label-amex">American Express Carta Oro</div>
+      <div class="col-label col-label-rev">Revolut Metal Duo</div>
     </div>
     <div class="compare-grid">
-      <div class="compare-cell amex-col">
-        <h4>American Express Carta Oro</h4>
-        <span class="winner-badge">Vince</span>
-        <ul>
-          <li><strong>Avis:</strong> 20% sconto in Italia, 15% worldwide (tariffe non promo)</li>
-          <li><strong>Hertz:</strong> 10% sconto + upgrade gratuito (≥5 gg) + 2° conducente gratis</li>
-          <li><strong>Maggiore:</strong> sconti inclusi</li>
-          <li>Copertura CDW (kasko): ~<strong>€30.000</strong> stimati</li>
-          <li>Attivazione: pagare intero noleggio con carta</li>
+      <div class="card-amex">
+        <div class="winner-badge winner-badge-neutral">Commissioni presenti</div>
+        <div class="card-title">Amex · Cambio valuta</div>
+        <ul class="detail-list">
+          <li><span class="label">Commissione cambio</span><span class="val">~2–3% sul cambio</span></li>
+          <li><span class="label">ATM extra-EU</span><span class="val">~3% + fisso</span></li>
+          <li><span class="label">ATM in EU</span><span class="val">Tariffa standard</span></li>
+          <li><span class="label">Accettazione</span><span class="val">⚠️ Limitata in Italia</span></li>
         </ul>
-        <div class="notice">La copertura CDW/kasko completa non è esplicitamente confermata nelle polizze Chubb analizzate. Verificare direttamente con Amex prima del noleggio.</div>
       </div>
-      <div class="compare-cell revolut-col">
-        <h4>Revolut Metal Duo</h4>
-        <ul>
-          <li>Nessuno sconto Avis/Hertz/Maggiore</li>
-          <li>Rimborso <strong>franchigia CDW</strong>: fino a ~€2.000</li>
-          <li>Veicoli fino a €70.000 di valore</li>
-          <li>Solo all'estero o >200 km da casa se in Italia</li>
-          <li>Devi acquistare la CDW base dalla compagnia</li>
+      <div class="card-rev">
+        <div class="winner-badge winner-badge-rev">✦ Vantaggio chiaro</div>
+        <div class="card-title">Revolut · Cambio valuta</div>
+        <ul class="detail-list">
+          <li><span class="label">Commissione cambio</span><span class="val">0% (tasso interbancario)</span></li>
+          <li><span class="label">ATM in EU</span><span class="val">€800/mese gratis (Metal)</span></li>
+          <li><span class="label">ATM extra-EU</span><span class="val">€800/mese gratis (Metal)</span></li>
+          <li><span class="label">Oltre il limite ATM</span><span class="val">2% di commissione</span></li>
         </ul>
-        <div class="notice">Revolut copre solo la franchigia (excess), non la kasko completa. Il noleggio deve avvenire all'estero o >200 km da casa.</div>
+      </div>
+    </div>
+    <div class="notice" style="margin-top: 0;">
+      ⚠️ Attenzione: cambio valuta nel weekend con Revolut può applicare uno spread dell'1% (mercati chiusi). Verificare sempre le condizioni aggiornate.
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── SECTION 7: ALTRI BENEFIT ── -->
+<section class="section" id="altri">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-emoji">🎁</span>
+      <h2>Altri benefit</h2>
+      <p>Vantaggi aggiuntivi e servizi esclusivi</p>
+    </div>
+    <div class="col-labels">
+      <div class="col-label col-label-amex">American Express Carta Oro</div>
+      <div class="col-label col-label-rev">Revolut Metal Duo</div>
+    </div>
+    <div class="compare-grid">
+      <div class="card-amex">
+        <div class="card-title">Benefit Amex</div>
+        <div class="card-body">
+          <ul>
+            <li>🏨 <strong>Hotel Collection</strong>: upgrade + credito $100 in oltre 1.000 hotel</li>
+            <li>✈️ <strong>Amex Travel</strong>: tariffe preferenziali voli e hotel</li>
+            <li>🛍️ Offerte Amex Offers (cashback su merchant selezionati)</li>
+            <li>📱 App gestione punti e benefit</li>
+            <li>💼 Servizio clienti 24/7 dedicato</li>
+            <li>🔒 Protezione acquisti e Extended Warranty</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card-rev">
+        <div class="card-title">Benefit Revolut</div>
+        <div class="card-body">
+          <ul>
+            <li>🏨 <strong>Revolut Stays</strong>: 10% cashback su prenotazioni hotel</li>
+            <li>🌐 Numero virtuale per acquisti online sicuri</li>
+            <li>📈 <strong>Trading crypto/azioni</strong> senza commissioni (Metal)</li>
+            <li>🔕 Freeze/unfreeze carta in tempo reale</li>
+            <li>🔔 Notifiche spesa istantanee</li>
+            <li>💱 Conti multivaluta (30+ valute)</li>
+            <li>👨‍👩‍👧 Piano Duo: 2 piani Metal completi e indipendenti</li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
+</section>
 
-  <!-- PUNTI E CASHBACK -->
-  <div class="section">
-    <div class="section-title">💰 Punti &amp; Cashback</div>
-    <div class="row-header">
-      <span class="icon">📊</span>
-      <h3>Profilo spesa coppia: ~€5.500/anno (viaggi €3k, ristoranti €500, acquisti €2k)</h3>
+<div class="divider"></div>
+
+<!-- ── SECTION 8: SIMULAZIONE ── -->
+<section class="section" id="simulazione">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-emoji">📊</span>
+      <h2>Simulazione valore annuo</h2>
+      <p>Profilo: viaggiatore frequente, 6–8 voli/anno, 3–4 noleggi, hotel 3–4 notti</p>
     </div>
-    <div class="compare-grid">
-      <div class="compare-cell amex-col">
-        <h4>Membership Rewards (Amex)</h4>
-        <div class="highlight-val">~5.500</div>
-        <div style="font-size:12px;color:var(--text-dim);margin-bottom:12px">punti MR all'anno (1 MR per €1)</div>
-        <ul>
-          <li>Valore minimo uso diretto: <strong>~€22/anno</strong> (€0,004/pt)</li>
-          <li>Valore ottimizzato miglia: <strong>~€38-41/anno</strong></li>
-          <li>Transfer 1:1: ITA Volare, Flying Blue</li>
-          <li>Transfer 1:1: Air France/KLM</li>
-          <li>ALL Accor (luglio 2026)</li>
-          <li>Punti non scadono con carta attiva</li>
-        </ul>
+
+    <div class="stat-grid">
+      <div class="stat-card-amex">
+        <div class="stat-value">€160</div>
+        <div class="stat-label">Canone Amex annuo</div>
       </div>
-      <div class="compare-cell revolut-col">
-        <h4>Cashback + RevPoints (Revolut)</h4>
-        <div class="highlight-val">0,1–10%</div>
-        <div style="font-size:12px;color:var(--text-dim);margin-bottom:12px">cashback variabile per categoria</div>
-        <ul>
-          <li>Europa (€5.000): 0,1% = <strong>€5</strong></li>
-          <li>Extra-EU (€500): 1% = <strong>€5</strong></li>
-          <li>Hotel via Revolut Stays: <strong>10%</strong> (€100 su €1.000 hotel)</li>
-          <li>RevPoints: 1 pt ogni €2 = ~2.750/anno</li>
-          <li>RevPoints convertibili in miglia (30+ partner)</li>
-          <li>Cashback accreditato in euro automaticamente</li>
-        </ul>
+      <div class="stat-card-amex">
+        <div class="stat-value">€100</div>
+        <div class="stat-label">Voucher annuale incluso</div>
+      </div>
+      <div class="stat-card-amex">
+        <div class="stat-value">~€60</div>
+        <div class="stat-label">Costo netto Amex</div>
       </div>
     </div>
-  </div>
 
-  <!-- LOUNGE -->
-  <div class="section">
-    <div class="section-title">🛋️ Lounge aeroportuali</div>
-    <div class="compare-grid">
-      <div class="compare-cell amex-col">
-        <h4>Priority Pass — American Express</h4>
-        <ul>
-          <li><strong>2 accessi gratuiti/anno</strong> (titolare)</li>
-          <li>Rete: 1.200+ lounge nel mondo</li>
-          <li>Uso: titolare + 1 ospite (1 visita coppia) oppure 2 visite singole</li>
-          <li>Carlotta NON ha accessi propri</li>
-          <li>Ulteriori ingressi: ~€30-35 cad.</li>
-          <li>Garantito in qualsiasi momento</li>
-        </ul>
+    <div class="stat-grid">
+      <div class="stat-card-rev">
+        <div class="stat-value">€252</div>
+        <div class="stat-label">Canone Revolut Duo</div>
       </div>
-      <div class="compare-cell revolut-col">
-        <h4>SmartDelay — Revolut Metal</h4>
-        <span class="winner-badge">Vince (flessibilità)</span>
-        <ul>
-          <li>Lounge normali: a pagamento scontato</li>
-          <li><strong>SmartDelay:</strong> accesso GRATUITO se ritardo ≥1h</li>
-          <li>Copre titolare + <strong>3 accompagnatori</strong> (4 totali)</li>
-          <li>Carlotta inclusa automaticamente</li>
-          <li>1.000+ lounge in 500+ aeroporti</li>
-          <li>Attivazione: registrare volo in app in anticipo</li>
-        </ul>
+      <div class="stat-card-rev">
+        <div class="stat-value">€60–120</div>
+        <div class="stat-label">Cashback stimato</div>
+      </div>
+      <div class="stat-card-rev">
+        <div class="stat-value">€130–190</div>
+        <div class="stat-label">Costo netto Revolut</div>
       </div>
     </div>
-  </div>
 
-  <!-- CAMBIO VALUTA -->
-  <div class="section">
-    <div class="section-title">💱 Cambio valuta &amp; ATM</div>
-    <div class="compare-grid">
-      <div class="compare-cell amex-col">
-        <h4>American Express Carta Oro</h4>
-        <ul>
-          <li>Cambio valuta con commissioni applicate</li>
-          <li>Meno conveniente fuori dall'Eurozona</li>
-          <li>Carta di credito (charge): addebito fine mese</li>
-          <li>Accettazione: ottima MA inferiore a Visa/MC</li>
-          <li>Prelievi ATM: commissioni applicate</li>
-        </ul>
-        <div class="notice">Fuori dall'Eurozona valutare una carta integrativa per i pagamenti in valuta estera</div>
-      </div>
-      <div class="compare-cell revolut-col">
-        <h4>Revolut Metal Duo</h4>
-        <span class="winner-badge">Vince</span>
-        <ul>
-          <li><strong>Cambio valuta illimitato GRATIS</strong> (150+ valute)</li>
-          <li>Tasso interbancario mid-market</li>
-          <li>Nessuna commissione weekend (eliminata 2025)</li>
-          <li>ATM gratis fino a <strong>€800/mese</strong></li>
-          <li>Carta di debito: nessun credito differito</li>
-          <li>Accettazione: circuito Visa/Mastercard globale</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <!-- ALTRI BENEFIT -->
-  <div class="section">
-    <div class="section-title">✨ Altri benefit</div>
-    <div class="compare-grid">
-      <div class="compare-cell amex-col">
-        <h4>American Express Carta Oro</h4>
-        <ul>
-          <li>Voucher viaggio €50 (portale Amex)</li>
-          <li>Voucher eventi €50 (Vivaticket)</li>
-          <li>Hotel Collection: credito ~$100 + upgrade camera</li>
-          <li>Protezione acquisti: <strong>€2.600/evento</strong>, €7.800/anno</li>
-          <li>Amex Offers: sconti personalizzati su app</li>
-          <li>Linea di credito fino a €15.000</li>
-          <li>Materiale: carta in metallo</li>
-        </ul>
-        <div class="notice">Protezione acquisti esclude: smartphone, PC, tablet, gioielli, orologi</div>
-      </div>
-      <div class="compare-cell revolut-col">
-        <h4>Revolut Metal Duo</h4>
-        <ul>
-          <li>Protezione acquisti: <strong>€10.000/anno</strong></li>
-          <li>Mancata partecipazione eventi: <strong>€1.000/anno</strong></li>
-          <li>Responsabilità personale: €1.000.000</li>
-          <li>5 conti Revolut Junior (minorenni)</li>
-          <li>Interessi risparmi (Vault): <strong>3,50%</strong> fino €15.000</li>
-          <li>Bonifici extra-SEPA: sconto 40%</li>
-          <li>10 operazioni crypto/trading gratuite al mese</li>
-          <li>Concierge 24/7 via app</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- SIMULAZIONE VALORE ANNUO -->
-  <div class="section">
-    <div class="section-title">📈 Simulazione valore annuo — Coppia, dal 2° anno</div>
-    <div class="sim-grid">
-      <div class="sim-card amex">
+    <div class="sim-wrapper" style="margin-top: 16px;">
+      <div class="sim-card sim-card-amex">
         <div class="sim-title">American Express Carta Oro</div>
-        <div class="sim-row">
-          <span class="label">Quota annuale (titolare + suppl.)</span>
-          <span class="val-neg">-€323</span>
-        </div>
-        <div class="sim-row">
-          <span class="label">2 accessi lounge (1 coppia)</span>
-          <span class="val-pos">+€70</span>
-        </div>
-        <div class="sim-row">
-          <span class="label">Voucher viaggio €50 (portale Amex)</span>
-          <span class="val-pos">+€50</span>
-        </div>
-        <div class="sim-row">
-          <span class="label">Voucher eventi €50 (Vivaticket)</span>
-          <span class="val-pos">+€50</span>
-        </div>
-        <div class="sim-row">
-          <span class="label">Punti MR ~5.500 (valore minimo)</span>
-          <span class="val-pos">+€22</span>
-        </div>
-        <div class="sim-row">
-          <span class="label">Sconto noleggio Avis/Hertz (~€500 × 15%)</span>
-          <span class="val-pos">+€75</span>
-        </div>
-        <div class="sim-row">
-          <span class="label">Hotel Collection (1× uso)</span>
-          <span class="val-warn">+€85 (se usato)</span>
-        </div>
-        <div class="sim-row total-row">
-          <span class="label">Saldo netto (senza Hotel Collection)</span>
-          <span class="val-neg">-€56</span>
-        </div>
-        <div class="sim-row total-row">
-          <span class="label">Saldo netto (con Hotel Collection)</span>
-          <span class="val-pos">+€29</span>
-        </div>
+        <div class="sim-row"><span class="label">Canone annuo</span><span class="val-neg">-€160</span></div>
+        <div class="sim-row"><span class="label">Voucher €100 rimborso</span><span class="val-pos">+€100</span></div>
+        <div class="sim-row"><span class="label">Sconti noleggio Avis/Hertz</span><span class="val-pos">+€60–100</span></div>
+        <div class="sim-row"><span class="label">Kasko noleggio (CDW)</span><span class="val-pos">+€80–150</span></div>
+        <div class="sim-row"><span class="label">Punti MR → miglia</span><span class="val-pos">+€50–80</span></div>
+        <div class="sim-row"><span class="label">Hotel Collection (upgrade+credito)</span><span class="val-pos">+€100 est.</span></div>
+        <div class="sim-row"><span class="label">Assicurazione viaggi</span><span class="val-pos">+€30–50</span></div>
+        <div class="sim-row total-row"><span class="label">Saldo netto stimato</span><span class="val-pos">+€260–320</span></div>
       </div>
-      <div class="sim-card revolut">
+      <div class="sim-card sim-card-rev">
         <div class="sim-title">Revolut Metal Duo</div>
-        <div class="sim-row">
-          <span class="label">Quota annuale (Metal Duo, annuale)</span>
-          <span class="val-neg">-€260</span>
-        </div>
-        <div class="sim-row">
-          <span class="label">Cashback Europa (€5.000 × 0,1%)</span>
-          <span class="val-pos">+€5</span>
-        </div>
-        <div class="sim-row">
-          <span class="label">Cashback extra-EU (€500 × 1%)</span>
-          <span class="val-pos">+€5</span>
-        </div>
-        <div class="sim-row">
-          <span class="label">Cashback Revolut Stays (€1.000 hotel × 10%)</span>
-          <span class="val-warn">+€100 (se usato)</span>
-        </div>
-        <div class="sim-row">
-          <span class="label">SmartDelay lounge (1-2 ritardi/anno)</span>
-          <span class="val-pos">+€60–120</span>
-        </div>
-        <div class="sim-row">
-          <span class="label">Risparmio cambio valuta extra-EU</span>
-          <span class="val-pos">+€10</span>
-        </div>
-        <div class="sim-row">
-          <span class="label">ATM gratuiti all'estero</span>
-          <span class="val-pos">+€10–20</span>
-        </div>
-        <div class="sim-row total-row">
-          <span class="label">Saldo netto (senza Stays hotel)</span>
-          <span class="val-neg">-€110 / -€170</span>
-        </div>
-        <div class="sim-row total-row">
-          <span class="label">Saldo netto (con Stays €1.000)</span>
-          <span class="val-neg">-€10 / -€70</span>
-        </div>
+        <div class="sim-row"><span class="label">Canone annuo (Duo)</span><span class="val-neg">-€252</span></div>
+        <div class="sim-row"><span class="label">Cashback base (0.1%)</span><span class="val-pos">+€30–50</span></div>
+        <div class="sim-row"><span class="label">Cashback weekend (1%)</span><span class="val-pos">+€20–40</span></div>
+        <div class="sim-row"><span class="label">Revolut Stays (10% su €1.000)</span><span class="val-pos">+€100</span></div>
+        <div class="sim-row"><span class="label">Zero commissioni valuta</span><span class="val-pos">+€40–80</span></div>
+        <div class="sim-row"><span class="label">Assicurazione medica (valore)</span><span class="val-pos">+€30–50</span></div>
+        <div class="sim-row"><span class="label">Lounge SmartDelay</span><span class="val-pos">+€10–20</span></div>
+        <div class="sim-row total-row"><span class="label">Saldo netto stimato</span><span class="val-neg">-€10 / +€90</span></div>
       </div>
     </div>
-    <div class="notice" style="margin-top:0;margin-bottom:32px">
-      📌 In termini economici: Amex Oro vince se si sfruttano Hotel Collection + vouchers + kasko noleggio. Revolut Metal Duo si avvicina se si viaggia fuori Europa e si prenotano gli hotel via app.
+
+    <div class="info-card">
+      <strong>📌 In sintesi:</strong> Amex Oro vince se si sfruttano Hotel Collection + voucher + kasko noleggio. Revolut Metal Duo si avvicina (e può pareggiare) se si viaggia molto fuori Europa e si prenotano hotel via Revolut Stays. I valori sono stime su profilo tipico — il saldo reale dipende dall'utilizzo effettivo.
     </div>
   </div>
+</section>
 
-  <!-- VERDETTO -->
-  <div class="section">
-    <div class="section-title">🏆 Verdetto finale</div>
+<div class="divider"></div>
+
+<!-- ── SECTION 9: VERDETTO ── -->
+<section class="section" id="verdetto">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-emoji">🏆</span>
+      <h2>Verdetto finale</h2>
+      <p>Scegli in base al tuo profilo reale</p>
+    </div>
     <div class="verdict-grid">
-      <div class="verdict-card amex">
-        <h3>American Express Carta Oro</h3>
-        <div class="tagline">Per chi vuole benefit certi e tangibili</div>
-        <div class="list-sub-title">✅ Sceglila se</div>
-        <ul class="pro-con-list">
-          <li class="pro">Vuoi <strong>vouchers certi e immediati</strong> (€100 annui usabili subito)</li>
-          <li class="pro">Hai <strong>noleggi frequenti</strong> con Avis/Hertz (sconti 10-20%)</li>
-          <li class="pro">Ottimizzi i punti MR in <strong>miglia aeree</strong> (ITA Volare, Flying Blue)</li>
-          <li class="pro">Fai 2-3 notti in <strong>hotel premium</strong>/anno (Hotel Collection)</li>
-          <li class="pro">Vuoi un <strong>accesso lounge garantito</strong> per coppia senza pensarci</li>
-          <li class="pro">Hai bisogno di una <strong>linea di credito</strong> (charge card)</li>
+      <div class="verdict-card-amex">
+        <div class="winner-badge winner-badge-amex" style="margin-bottom: 16px;">🥇 American Express Carta Oro</div>
+        <h3>Per chi vuole benefit certi e tangibili</h3>
+        <p class="verdict-tagline">Voucher, miglia, noleggio, hotel — valore misurabile da subito.</p>
+
+        <div class="verdict-sub">✅ Sceglila se</div>
+        <ul class="verdict-list pros">
+          <li>Vuoi <strong>vouchers certi e immediati</strong> (€100 annui usabili subito)</li>
+          <li>Hai <strong>noleggi frequenti</strong> con Avis/Hertz (sconti 10–20%)</li>
+          <li>Ottimizzi i punti MR in <strong>miglia aeree</strong> (ITA Volare, Flying Blue)</li>
+          <li>Fai 2–3 notti in <strong>hotel premium</strong>/anno (Hotel Collection)</li>
+          <li>Vuoi un <strong>accesso lounge garantito</strong> per coppia senza pensarci</li>
+          <li>Hai bisogno di una <strong>linea di credito</strong> (charge card)</li>
         </ul>
-        <div class="list-sub-title">❌ Attenzione a</div>
-        <ul class="pro-con-list">
-          <li class="con"><strong>Accettazione</strong>: alcuni locali in Italia non la accettano — serve backup Visa/MC</li>
-          <li class="con"><strong>Copertura medica bassa</strong> (€3.000) per viaggi fuori Europa</li>
-          <li class="con">Carlotta NON ha accessi lounge autonomi</li>
-          <li class="con">CDW noleggio auto da <strong>verificare direttamente con Amex</strong></li>
-          <li class="con"><strong>Cambio valuta con commissioni</strong> — costosa fuori dall'Eurozona</li>
-          <li class="con">Massimali assicurativi si <strong>dividono</strong> se viaggiate insieme</li>
+
+        <div class="verdict-sub">❌ Attenzione a</div>
+        <ul class="verdict-list cons">
+          <li><strong>Accettazione</strong>: alcuni locali in Italia non la accettano</li>
+          <li><strong>Copertura medica bassa</strong> (€3.000) per viaggi fuori Europa</li>
+          <li>Carlotta NON ha accessi lounge autonomi</li>
+          <li><strong>Cambio valuta con commissioni</strong> — costosa fuori dall'Eurozona</li>
+          <li>Massimali assicurativi si <strong>dividono</strong> se viaggiate insieme</li>
         </ul>
       </div>
-      <div class="verdict-card revolut">
-        <h3>Revolut Metal Duo</h3>
-        <div class="tagline">Per chi viaggia spesso e vuole semplicità</div>
-        <div class="list-sub-title">✅ Sceglila se</div>
-        <ul class="pro-con-list">
-          <li class="pro">Viaggiate spesso <strong>fuori Europa</strong> (cambio valuta gratis, illimitato)</li>
-          <li class="pro">Prenotate hotel via <strong>Revolut Stays</strong> (10% cashback ribalta i conti)</li>
-          <li class="pro">Volete <strong>entrambi con pieni benefit</strong> autonomi (lui e Carlotta)</li>
-          <li class="pro"><strong>Copertura medica alta</strong> è priorità (€10M vs €3.000)</li>
-          <li class="pro">Volete anche una soluzione per <strong>prelievi ATM</strong> all'estero</li>
-          <li class="pro">Preferite <strong>cashback in euro</strong> senza complessità di programmi punti</li>
+      <div class="verdict-card-rev">
+        <div class="winner-badge winner-badge-rev" style="margin-bottom: 16px;">⚡ Revolut Metal Duo</div>
+        <h3>Per chi viaggia spesso e vuole semplicità</h3>
+        <p class="verdict-tagline">Copertura globale, cashback diretto, nessun costo nascosto.</p>
+
+        <div class="verdict-sub">✅ Sceglila se</div>
+        <ul class="verdict-list pros">
+          <li>Viaggiate spesso <strong>fuori Europa</strong> (cambio valuta gratis, illimitato)</li>
+          <li>Prenotate hotel via <strong>Revolut Stays</strong> (10% cashback)</li>
+          <li>Volete <strong>entrambi con pieni benefit</strong> autonomi</li>
+          <li><strong>Copertura medica alta</strong> è priorità (€10M vs €3.000)</li>
+          <li>Volete una soluzione per <strong>prelievi ATM</strong> all'estero</li>
+          <li>Preferite <strong>cashback immediato</strong> senza programmi punti</li>
         </ul>
-        <div class="list-sub-title">❌ Attenzione a</div>
-        <ul class="pro-con-list">
-          <li class="con">Nessuno <strong>sconto negoziale</strong> su noleggio auto (Avis/Hertz)</li>
-          <li class="con"><strong>Lounge NON gratuita</strong> in condizioni normali (solo SmartDelay)</li>
-          <li class="con">Nessun <strong>voucher fisso annuale</strong> (i €100 Amex sono certi; qui il cashback va guadagnato)</li>
-          <li class="con"><strong>Carta di debito</strong>: nessun credito differito</li>
-          <li class="con">Assicurazione viaggio richiede di pagare <strong>TUTTO il viaggio</strong> con Revolut</li>
-          <li class="con"><strong>Condizioni cambiano frequentemente</strong> (Revolut aggiorna spesso i termini)</li>
+
+        <div class="verdict-sub">❌ Attenzione a</div>
+        <ul class="verdict-list cons">
+          <li>Nessuno <strong>sconto negoziale</strong> su noleggio auto (Avis/Hertz)</li>
+          <li><strong>Lounge NON gratuita</strong> in condizioni normali (solo SmartDelay)</li>
+          <li>Nessun <strong>voucher fisso annuale</strong> garantito</li>
+          <li><strong>Carta di debito</strong>: nessun credito differito</li>
+          <li>Assicurazione richiede di pagare <strong>TUTTO il viaggio</strong> con Revolut</li>
+          <li><strong>Condizioni cambiano frequentemente</strong> (Revolut aggiorna spesso i termini)</li>
         </ul>
       </div>
     </div>
   </div>
+</section>
 
-</div><!-- /container -->
-
+<!-- ── FOOTER ── -->
 <footer>
   <div class="container">
     <p><strong>Dati aggiornati settembre 2026</strong> · Fonti: americanexpress.com/it, polizze Chubb ufficiali, Commissioni Revolut v1.9.0 (nov 2025), polizza XCover Metal (mar 2025)</p>
-    <p style="margin-top:8px">Questo confronto ha finalità informative. Verificare sempre le condizioni aggiornate direttamente con Amex e Revolut prima di prendere decisioni.</p>
-    <p style="margin-top:8px">Generato da <strong>Marvin</strong> · michelesarzana/cards · <a href="https://michelesarzana.github.io/cards/" style="color:var(--revolut)">michelesarzana.github.io/cards</a></p>
+    <p>Questo confronto ha finalità informative. Verificare sempre le condizioni aggiornate direttamente con Amex e Revolut prima di prendere decisioni.</p>
+    <p>Generato da <strong>Marvin</strong> · <a href="https://michelesarzana.github.io/cards/">michelesarzana.github.io/cards</a></p>
   </div>
 </footer>
 
