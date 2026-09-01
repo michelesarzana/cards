@@ -457,35 +457,51 @@
   .stat-label { font-size: 12px; font-weight: 500; opacity: 0.65; }
 
   /* ── PRO/CON LISTS (Verdict) ── */
-  .verdict-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .verdict-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
   .verdict-card-amex {
     background: linear-gradient(145deg, var(--amex-cream) 0%, #fff3d0 60%, var(--amex-cream) 100%);
     border: 1.5px solid var(--amex-border);
     border-radius: var(--radius-card);
-    padding: 32px 28px;
+    padding: 36px 32px;
     box-shadow: var(--shadow-med);
   }
   .verdict-card-rev {
     background: linear-gradient(145deg, var(--rev-dark) 0%, var(--rev-graphite) 60%, var(--rev-dark) 100%);
-    border: 1.5px solid rgba(123,94,167,0.25);
+    border: 1.5px solid rgba(123,94,167,0.35);
     border-radius: var(--radius-card);
-    padding: 32px 28px;
+    padding: 36px 32px;
     box-shadow: var(--shadow-med);
     color: var(--white);
   }
-  .verdict-card-amex h3 { font-size: 18px; font-weight: 700; color: var(--amex-dark); margin-bottom: 4px; letter-spacing: -0.01em; }
-  .verdict-card-rev h3 { font-size: 18px; font-weight: 700; color: var(--white); margin-bottom: 4px; letter-spacing: -0.01em; }
-  .verdict-tagline { font-size: 13px; margin-bottom: 22px; }
+  .verdict-card-amex h3 { font-size: 20px; font-weight: 700; color: var(--amex-dark); margin-bottom: 6px; letter-spacing: -0.02em; line-height: 1.3; }
+  .verdict-card-rev h3 { font-size: 20px; font-weight: 700; color: var(--white); margin-bottom: 6px; letter-spacing: -0.02em; line-height: 1.3; }
+  .verdict-tagline { font-size: 14px; margin-bottom: 28px; line-height: 1.5; }
   .verdict-card-amex .verdict-tagline { color: #7a6030; }
   .verdict-card-rev .verdict-tagline { color: var(--rev-silver); }
-  .verdict-sub { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; margin: 16px 0 8px; }
+  .verdict-sub {
+    font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;
+    margin: 22px 0 10px; padding-bottom: 6px;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+  }
+  .verdict-card-rev .verdict-sub { border-bottom-color: rgba(255,255,255,0.1); }
   .verdict-card-amex .verdict-sub { color: var(--amex-gold); }
   .verdict-card-rev .verdict-sub { color: var(--rev-light-violet); }
-  .verdict-list { list-style: none; }
-  .verdict-list li { font-size: 13px; line-height: 1.5; padding: 5px 0; display: flex; gap: 8px; align-items: flex-start; }
-  .verdict-list li::before { flex-shrink: 0; margin-top: 1px; }
-  .verdict-list.pros li::before { content: '✓'; font-weight: 700; color: var(--green); }
-  .verdict-list.cons li::before { content: '✕'; font-weight: 700; color: var(--red); }
+  .verdict-list { list-style: none; margin: 0; padding: 0; }
+  .verdict-list li {
+    font-size: 14px;
+    line-height: 1.55;
+    padding: 7px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    display: grid;
+    grid-template-columns: 18px 1fr;
+    gap: 10px;
+    align-items: baseline;
+  }
+  .verdict-card-rev .verdict-list li { border-bottom-color: rgba(255,255,255,0.06); }
+  .verdict-list li:last-child { border-bottom: none; }
+  .verdict-list li .verdict-icon { font-size: 13px; font-weight: 700; line-height: 1.55; }
+  .verdict-list.pros li .verdict-icon { color: var(--green); }
+  .verdict-list.cons li .verdict-icon { color: var(--red); }
 
   /* ── FOOTER ── */
   footer {
@@ -960,22 +976,22 @@
         <h3>Per chi vuole benefit certi e tangibili</h3>
         <p class="verdict-tagline">Noleggio, lounge, kasko — valore misurabile su profilo reale.</p>
 
-        <div class="verdict-sub">✅ Sceglila se</div>
+        <div class="verdict-sub">Sceglila se</div>
         <ul class="verdict-list pros">
-          <li>Hai <strong>2+ noleggi/anno</strong> con Avis/Hertz (sconti ~10–15%)</li>
-          <li>Vuoi <strong>2 accessi lounge garantiti in coppia</strong> senza dipendere dai ritardi</li>
-          <li>Vuoi la <strong>kasko noleggio inclusa</strong> (CDW — da verificare con Amex)</li>
-          <li>Hai bisogno di una <strong>linea di credito</strong> (charge card)</li>
-          <li>Preferisci <strong>un solo canone per la coppia</strong> (supplementare gratuita)</li>
+          <li><span class="verdict-icon">✓</span><span>Hai <strong>2+ noleggi/anno</strong> con Avis/Hertz (sconti ~10–15%)</span></li>
+          <li><span class="verdict-icon">✓</span><span>Vuoi <strong>2 accessi lounge garantiti in coppia</strong> senza dipendere dai ritardi</span></li>
+          <li><span class="verdict-icon">✓</span><span>Vuoi la <strong>kasko noleggio inclusa</strong> (CDW — da verificare con Amex)</span></li>
+          <li><span class="verdict-icon">✓</span><span>Hai bisogno di una <strong>linea di credito</strong> (charge card)</span></li>
+          <li><span class="verdict-icon">✓</span><span>Preferisci <strong>un solo canone per la coppia</strong> (supplementare gratuita)</span></li>
         </ul>
 
-        <div class="verdict-sub">❌ Attenzione a</div>
+        <div class="verdict-sub">Attenzione a</div>
         <ul class="verdict-list cons">
-          <li><strong>Accettazione</strong>: alcuni locali in Italia non la accettano</li>
-          <li><strong>Copertura medica bassa</strong> (€3.000) per viaggi fuori Europa</li>
-          <li>Solo <strong>2 accessi lounge gratuiti</strong> — le altre 2 partenze non sono coperte</li>
-          <li><strong>Cambio valuta con commissioni</strong> — costosa fuori dall'Eurozona</li>
-          <li>Kasko CDW: verificare le condizioni aggiornate direttamente con Amex</li>
+          <li><span class="verdict-icon">✕</span><span><strong>Accettazione</strong>: alcuni locali in Italia non la accettano</span></li>
+          <li><span class="verdict-icon">✕</span><span><strong>Copertura medica bassa</strong> (€3.000) per viaggi fuori Europa</span></li>
+          <li><span class="verdict-icon">✕</span><span>Solo <strong>2 accessi lounge gratuiti</strong> — le altre 2 partenze non sono coperte</span></li>
+          <li><span class="verdict-icon">✕</span><span><strong>Cambio valuta con commissioni</strong> — costosa fuori dall'Eurozona</span></li>
+          <li><span class="verdict-icon">✕</span><span>Kasko CDW: verificare le condizioni aggiornate direttamente con Amex</span></li>
         </ul>
       </div>
       <div class="verdict-card-rev">
@@ -983,24 +999,24 @@
         <h3>Per chi viaggia spesso e vuole semplicità</h3>
         <p class="verdict-tagline">Copertura globale, cashback diretto, nessun costo nascosto.</p>
 
-        <div class="verdict-sub">✅ Sceglila se</div>
+        <div class="verdict-sub">Sceglila se</div>
         <ul class="verdict-list pros">
-          <li>Viaggiate spesso <strong>fuori Europa</strong> (cambio valuta gratis, illimitato)</li>
-          <li>Prenotate hotel via <strong>Revolut Stays</strong> (10% cashback)</li>
-          <li>Volete <strong>entrambi con pieni benefit</strong> autonomi</li>
-          <li><strong>Copertura medica alta</strong> è priorità (€10M vs €3.000)</li>
-          <li>Volete una soluzione per <strong>prelievi ATM</strong> all'estero</li>
-          <li>Preferite <strong>cashback immediato</strong> senza programmi punti</li>
+          <li><span class="verdict-icon">✓</span><span>Viaggiate spesso <strong>fuori Europa</strong> (cambio valuta gratis, illimitato)</span></li>
+          <li><span class="verdict-icon">✓</span><span>Prenotate hotel via <strong>Revolut Stays</strong> (10% cashback)</span></li>
+          <li><span class="verdict-icon">✓</span><span>Volete <strong>entrambi con pieni benefit</strong> autonomi</span></li>
+          <li><span class="verdict-icon">✓</span><span><strong>Copertura medica alta</strong> è priorità (€10M vs €3.000)</span></li>
+          <li><span class="verdict-icon">✓</span><span>Volete una soluzione per <strong>prelievi ATM</strong> all'estero</span></li>
+          <li><span class="verdict-icon">✓</span><span>Preferite <strong>cashback immediato</strong> senza programmi punti</span></li>
         </ul>
 
-        <div class="verdict-sub">❌ Attenzione a</div>
+        <div class="verdict-sub">Attenzione a</div>
         <ul class="verdict-list cons">
-          <li>Nessuno <strong>sconto negoziale</strong> su noleggio auto (Avis/Hertz)</li>
-          <li><strong>Lounge NON gratuita</strong> in condizioni normali (solo SmartDelay)</li>
-          <li>Nessun <strong>voucher fisso annuale</strong> garantito</li>
-          <li><strong>Carta di debito</strong>: nessun credito differito</li>
-          <li>Assicurazione richiede di pagare <strong>TUTTO il viaggio</strong> con Revolut</li>
-          <li><strong>Condizioni cambiano frequentemente</strong> (Revolut aggiorna spesso i termini)</li>
+          <li><span class="verdict-icon">✕</span><span>Nessuno <strong>sconto negoziale</strong> su noleggio auto (Avis/Hertz)</span></li>
+          <li><span class="verdict-icon">✕</span><span><strong>Lounge NON gratuita</strong> in condizioni normali (solo SmartDelay)</span></li>
+          <li><span class="verdict-icon">✕</span><span>Nessun <strong>voucher fisso annuale</strong> garantito</span></li>
+          <li><span class="verdict-icon">✕</span><span><strong>Carta di debito</strong>: nessun credito differito</span></li>
+          <li><span class="verdict-icon">✕</span><span>Assicurazione richiede di pagare <strong>TUTTO il viaggio</strong> con Revolut</span></li>
+          <li><span class="verdict-icon">✕</span><span><strong>Condizioni cambiano frequentemente</strong> (Revolut aggiorna spesso i termini)</span></li>
         </ul>
       </div>
     </div>
